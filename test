@@ -1,0 +1,9 @@
+{
+    "appOs": "",
+    "pushTitle": "[예약취소]",
+    "pushContents": "호출하신 차량이 운행취소처리 되었습니다. 다음에 꼭 다시 뵙기를 희망합니다.",
+    "badgeCnt": 1,
+    "targetId": 262,
+    "token": "-",
+    "pushId": 9557
+}

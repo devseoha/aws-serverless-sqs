@@ -1,0 +1,7 @@
+Resources:
+  FcmQueue:
+    Type: "AWS::SQS::Queue"
+    Properties:
+      FifoQueue: True
+      QueueName: "test-push.fifo"
+      ContentBasedDeduplication: "true"

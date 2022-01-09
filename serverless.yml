@@ -1,0 +1,35 @@
+service: test-push
+
+frameworkVersion: '2'
+
+custom: ${file(./config/.env.yml)}
+
+package:
+  individually: true
+
+plugins:
+  - serverless-plugin-typescript
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  region: ap-northeast-2
+
+resources:
+  - ${file(resources/sqs.yml)}
+
+functions:
+  sendDriverPush:
+    handler: handler.handler
+    vpc: ${self:custom.vpc}
+    events:
+      - sqs:
+          arn:
+            Fn::GetAtt:
+              - FcmQueue
+              - Arn
+    package:
+      patterns:
+        - 'node_modules/**'
+        - 'firebase.js'
